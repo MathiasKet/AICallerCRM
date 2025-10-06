@@ -1,4 +1,4 @@
-import { LayoutDashboard, Phone, Calendar, Settings, BarChart3, Key } from "lucide-react";
+import { LayoutDashboard, Phone, Calendar, Settings, BarChart3, FileText, Users, RefreshCw } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -11,7 +11,10 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import { LogOut } from "lucide-react";
 
 const menuItems = [
   {
@@ -25,6 +28,21 @@ const menuItems = [
     icon: Phone,
   },
   {
+    title: "Transcripts",
+    url: "/transcripts",
+    icon: FileText,
+  },
+  {
+    title: "CRM Contacts",
+    url: "/crm-contacts",
+    icon: Users,
+  },
+  {
+    title: "Data Sync",
+    url: "/data-sync",
+    icon: RefreshCw,
+  },
+  {
     title: "Calendar",
     url: "/calendar",
     icon: Calendar,
@@ -35,11 +53,6 @@ const menuItems = [
     icon: BarChart3,
   },
   {
-    title: "API Keys",
-    url: "/api-keys",
-    icon: Key,
-  },
-  {
     title: "Settings",
     url: "/settings",
     icon: Settings,
@@ -48,6 +61,17 @@ const menuItems = [
 
 export function AppSidebar() {
   const [location] = useLocation();
+
+  //todo: remove mock functionality
+  const user = {
+    name: "Admin User",
+    email: "admin@aicaller.com",
+    initials: "AU",
+  };
+
+  const handleLogout = () => {
+    console.log("Logout triggered");
+  };
 
   return (
     <Sidebar>
@@ -72,7 +96,7 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={location === item.url}
-                    data-testid={`link-${item.title.toLowerCase().replace(" ", "-")}`}
+                    data-testid={`link-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     <a href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -86,9 +110,27 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="text-xs text-muted-foreground">
-          © 2025 AI Caller System
+        <div className="flex items-center gap-3 mb-3">
+          <Avatar className="h-9 w-9">
+            <AvatarFallback className="bg-primary/10 text-primary">
+              {user.initials}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <div className="font-medium text-sm truncate">{user.name}</div>
+            <div className="text-xs text-muted-foreground truncate">{user.email}</div>
+          </div>
         </div>
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full justify-start"
+          onClick={handleLogout}
+          data-testid="button-logout"
+        >
+          <LogOut className="h-4 w-4 mr-2" />
+          Logout
+        </Button>
       </SidebarFooter>
     </Sidebar>
   );

@@ -9,9 +9,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { AppSidebar } from "@/components/AppSidebar";
 import Dashboard from "@/pages/Dashboard";
 import CallHistory from "@/pages/CallHistory";
+import Transcript from "@/pages/Transcript";
+import CRMContacts from "@/pages/CRMContacts";
+import DataSync from "@/pages/DataSync";
 import CalendarPage from "@/pages/CalendarPage";
 import Analytics from "@/pages/Analytics";
-import APIKeys from "@/pages/APIKeys";
 import Settings from "@/pages/Settings";
 import NotFound from "@/pages/not-found";
 
@@ -20,9 +22,11 @@ function Router() {
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/calls" component={CallHistory} />
+      <Route path="/transcripts" component={Transcript} />
+      <Route path="/crm-contacts" component={CRMContacts} />
+      <Route path="/data-sync" component={DataSync} />
       <Route path="/calendar" component={CalendarPage} />
       <Route path="/analytics" component={Analytics} />
-      <Route path="/api-keys" component={APIKeys} />
       <Route path="/settings" component={Settings} />
       <Route component={NotFound} />
     </Switch>

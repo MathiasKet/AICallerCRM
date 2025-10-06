@@ -1,6 +1,7 @@
 import { DashboardStats } from "@/components/DashboardStats";
 import { LiveCallMonitor } from "@/components/LiveCallMonitor";
 import { AnalyticsChart } from "@/components/AnalyticsChart";
+import { LeadsManagement } from "@/components/LeadsManagement";
 
 export default function Dashboard() {
   return (
@@ -16,8 +17,10 @@ export default function Dashboard() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <LiveCallMonitor />
-        <AnalyticsChart />
+        <LeadsManagement />
       </div>
+
+      <AnalyticsChart />
     </div>
   );
 }

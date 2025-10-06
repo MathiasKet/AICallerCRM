@@ -7,6 +7,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AppSidebar } from "@/components/AppSidebar";
+import Login from "@/pages/Login";
+import Onboarding from "@/pages/Onboarding";
 import Dashboard from "@/pages/Dashboard";
 import CallHistory from "@/pages/CallHistory";
 import Transcript from "@/pages/Transcript";
@@ -17,7 +19,7 @@ import Analytics from "@/pages/Analytics";
 import Settings from "@/pages/Settings";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function AuthenticatedRoutes() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
@@ -33,6 +35,18 @@ function Router() {
   );
 }
 
+function Router() {
+  return (
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/onboarding" component={Onboarding} />
+      <Route>
+        <AuthenticatedRoutes />
+      </Route>
+    </Switch>
+  );
+}
+
 export default function App() {
   const style = {
     "--sidebar-width": "16rem",
@@ -43,20 +57,26 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
-          <SidebarProvider style={style as React.CSSProperties}>
-            <div className="flex h-screen w-full">
-              <AppSidebar />
-              <div className="flex flex-col flex-1">
-                <header className="sticky top-0 z-50 flex items-center justify-between p-4 border-b bg-background">
-                  <SidebarTrigger data-testid="button-sidebar-toggle" />
-                  <ThemeToggle />
-                </header>
-                <main className="flex-1 overflow-auto p-6">
-                  <Router />
-                </main>
-              </div>
-            </div>
-          </SidebarProvider>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/onboarding" component={Onboarding} />
+            <Route>
+              <SidebarProvider style={style as React.CSSProperties}>
+                <div className="flex h-screen w-full">
+                  <AppSidebar />
+                  <div className="flex flex-col flex-1">
+                    <header className="sticky top-0 z-50 flex items-center justify-between p-4 border-b bg-background">
+                      <SidebarTrigger data-testid="button-sidebar-toggle" />
+                      <ThemeToggle />
+                    </header>
+                    <main className="flex-1 overflow-auto p-6">
+                      <AuthenticatedRoutes />
+                    </main>
+                  </div>
+                </div>
+              </SidebarProvider>
+            </Route>
+          </Switch>
           <Toaster />
         </TooltipProvider>
       </ThemeProvider>

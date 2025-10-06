@@ -1,0 +1,83 @@
+Project Title: AI Caller with CRM & Admin Dashboard
+
+Description:
+Build a sophisticated AI-powered voice caller system that:
+
+Uses Twilio for telephony (inbound/outbound calls).
+
+Leverages OpenAI Realtime for transcription and conversational AI.
+
+Integrates ElevenLabs for natural voice synthesis.
+
+Logs calls, transcripts, and leads into Zoho CRM.
+
+Provides a React + Tailwind + shadcn-ui admin dashboard for monitoring calls, viewing transcripts, managing CRM sync, and scheduling future calls via a calendar module.
+
+🔧 Features
+1. Caller System
+
+Handle inbound/outbound calls via Twilio.
+
+Convert speech ↔ text with OpenAI.
+
+Respond in natural voices using ElevenLabs.
+
+Support multi-language calls (Premium tier).
+
+2. CRM Integration
+
+Auto-log calls, leads, and transcripts into Zoho CRM.
+
+Two-way sync (update existing contacts, create new ones).
+
+3. Admin Dashboard
+
+Secure login with role-based access.
+
+Call history with full transcripts.
+
+Live transcript viewer.
+
+Analytics (call count, average duration, conversion rates).
+
+API key management (Twilio, OpenAI, ElevenLabs, Zoho).
+
+4. Calendar Module
+
+Built with React + FullCalendar (or shadcn-ui calendar component).
+
+Features:
+
+Schedule AI-assisted outbound calls.
+
+View past/future call history by date.
+
+Add reminders for follow-up calls.
+
+Sync with Google Calendar or Zoho Calendar API.
+
+📅 Timeline (Agile Sprints Example)
+
+Week 1–2: UI/UX in Figma (dashboard, calendar, call logs).
+
+Week 3–5: Backend (Twilio, OpenAI, ElevenLabs, CRM API).
+
+Week 6–7: Frontend (React dashboard + calendar).
+
+Week 8: Testing, QA, and deployment.
+
+⚙️ Tech Stack
+
+Frontend: React, TailwindCSS, shadcn-ui, FullCalendar.
+
+Backend: Node.js, Express, PostgreSQL (or Supabase).
+
+Telephony: Twilio.
+
+AI: OpenAI (transcription + conversation).
+
+Voice: ElevenLabs.
+
+CRM: Zoho CRM API.
+
+Hosting: AWS/Render (backend), Vercel/Netlify (frontend). use this site as https://www.omnixis.ai/ inspo . you can add this too https://app.clickup.com/90121215177/v/o/s/90125119694

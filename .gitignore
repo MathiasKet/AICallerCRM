@@ -41,9 +41,13 @@ vite.config.ts.*
 *.sqlite
 *.sqlite3
 
+# Vercel
+.vercel/
+.vercel_build_output/
+.vercel_deployment
+
 # Misc
 .cache/
 .temp/
 .tmp/
-.vercel/
 .netlify/
